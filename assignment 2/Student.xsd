@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://jw.nju.edu.cn/schema" 
+        xmlns:tns="http://jw.nju.edu.cn/schema"  
+        elementFormDefault="qualified">
+<include schemaLocation="../PersonInfo.xsd"></include>
+<include schemaLocation="../ScoreList.xsd"></include>
+  
+    <element name="个人信息" type="tns:个人信息类型"></element>  
+  
+    <element name="学号" type="tns:学号类型"></element>
+
+    <element name="院系" type="tns:院系类型"></element>
+
+    <element name="成绩列表" type="tns:成绩列表类型"></element>
+
+    
+      <simpleType name="院系类型">
+         <restriction base="string">
+          <enumeration value="软件学院"/>
+          <enumeration value="数学系"/>
+          <enumeration value="化学系"/>
+          <enumeration value="计算机与科学学院"/>
+          <enumeration value="哲学系"/>
+          <enumeration value="建筑系"/>
+          <enumeration value="医学系"/>
+          <enumeration value="物理学院"/>
+          <enumeration value="匡亚明学院"/>
+        </restriction>
+      </simpleType>
+    
+  
+    <simpleType name="学号类型">
+      <restriction base="string">
+    		<length value="9"></length>
+    	</restriction>
+    </simpleType>
+
+
+    <complexType name="学生类型">
+      <sequence>
+        <element ref="tns:院系"/>
+        <element ref="tns:个人信息"/>
+        <element ref="tns:成绩列表"/>
+      </sequence>
+      <attribute name="学号" type="tns:学号类型"></attribute>
+    </complexType>
+  
+    <element name="学生" type="tns:学生类型"></element>
+</schema>
+
